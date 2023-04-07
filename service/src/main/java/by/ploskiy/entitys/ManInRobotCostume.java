@@ -13,16 +13,16 @@ public class ManInRobotCostume extends BaseRobot {
 
             switch (new Random().nextInt(3)) {
                 case 0:
-                    tmpStringBuilder.append(getName() + "получил задание:" + getTask().getTitle() + "\n" + "Нужно где то спрятаться ...");
+                    tmpStringBuilder.append(getName() + "получил задание: " + getTask().getTitle() + "\n" + "Нужно где то спрятаться ...");
                     break;
                 case 1:
-                    tmpStringBuilder.append(getName() + "получил задание:" + getTask().getTitle() + "\n" + "Маскируемся деревом ... ");
+                    tmpStringBuilder.append(getName() + "получил задание: " + getTask().getTitle() + "\n" + "Маскируемся деревом ... ");
                     break;
                 case 2:
-                    tmpStringBuilder.append(getName() + "получил задание:" + getTask().getTitle() + "\n" + "Смотрите! Человеки!");
+                    tmpStringBuilder.append(getName() + "получил задание: " + getTask().getTitle() + "\n" + "Смотрите! Человеки!");
                     break;
                 default:
-                    tmpStringBuilder.append(getName() + "получил задание:" + getTask().getTitle() + "\n" + "Паника ... Началась охота на \"Человеков\"");
+                    tmpStringBuilder.append(getName() + "получил задание: " + getTask().getTitle() + "\n" + "Паника ... Началась охота на \"Человеков\"");
             }
 
             addRobotLogString(tmpStringBuilder.toString());
