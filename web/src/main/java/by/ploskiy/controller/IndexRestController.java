@@ -49,20 +49,18 @@ public class IndexRestController {
         taskController.addTask(task);
     }
 
-    @Autowired
-    private final TaskService taskService;
-
-    public IndexRestController(TaskController taskController, LogController logController, TaskService taskService) {
-        this.taskController = taskController;
-        this.logController = logController;
-        this.taskService = taskService;
-    }
-
     @PostMapping("/addTaskToRobot")
     public void addTaskToRobot(@RequestBody String dataButton) {
-        Task task = taskService.createTaskFromString(dataButton);
-        String robotName = taskService.extractRobotNameFromString(dataButton);
-        taskController.personalRobotTasr(task, robotName);
+        Pattern regEx = Pattern.compile("(task=)(\\D+)&(name=)(\\D+\\d+)");
+
+        Matcher matcher = regEx.matcher(dataButton);
+        matcher.find();
+
+        Task task = new Task();
+        task.setTitle(TaskTypeEnum.valueOf(matcher.group(2)).getDescription());
+        task.setType(matcher.group(2));
+
+        taskController.personalRobotTasr(task, matcher.group(4));
     }
 
     @GetMapping("/allComandsForRobots")
